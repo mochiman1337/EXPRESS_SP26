@@ -1,0 +1,3 @@
+#verything here is what you want git to ignore, like you dont need all the files. in .gitignore # is comments like python
+#Ignore node modules
+node_modules
