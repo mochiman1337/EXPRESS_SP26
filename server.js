@@ -2,6 +2,7 @@ const express = require('express');
 const app = express() //Calling express as a function sets up server
 //
 app.set('view engine', 'ejs');//This is adding in the render engine, required for html ejs page to load
+app.use(express.static("public"));//Added this to allow image to load
 app.get('/',(req, res)=>{
 console.log('Here');
 //res.send('<h1>Hi</h1>')
