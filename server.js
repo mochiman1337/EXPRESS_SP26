@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express() //Calling express as a function sets up server
-//
+const userRouter = require('./routes/users');//added during route slides
+const wordRouter = require('./routes/words');//created another route
+
+
 app.set('view engine', 'ejs');//This is adding in the render engine, required for html ejs page to load
 app.use(express.static("public"));//Added this to allow image to load
+
+app.use('/users', userRouter);//Added during router slides
+app.use('/words', wordRouter);//created this for word router
+
 app.get('/',(req, res)=>{
 console.log('Here');
-//res.send('<h1>Hi</h1>')
 res.render('index', {text: 'This will display what is inside the special tags <% text %>'});
 });//Request and respond, This is a ananomysous function
 

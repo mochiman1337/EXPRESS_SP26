@@ -12,9 +12,14 @@
     </p>
     <b>BOLD: The file name of this page is index.ejs <%= text %></b>
 
-    <% if(locals.userName==="George"){ %>
+    <% if(locals.userName==="George"){ 
             console.log("Hi George");
-        <%} %>
-    <p><img width="200" src="book.png" alt="stack of magic books"></p>
+            for(let i=0;i<8,i++){%>
+                <p><img width="200" src="book.png" alt="stack of magic books"></p>
+            
+        <%
+    }
+    } %>
+
 </body>
 </html>
