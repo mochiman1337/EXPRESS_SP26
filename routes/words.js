@@ -7,13 +7,22 @@ const {readFile, writeFile} = require('fs').promises;// Destructing, within {}
 router.get('/', (req, res)=>{
     res.send('Word Home Page');
 });
+
+//I am commenting out this portion to fix code overlap in WOTD
+//Callback function. Function calling a function. ex: get funtion (destination, fucntion2)
 router.get('/wotd', async (req, res)=>{
     let wordArray = await getWordFromDictionary();
     let [word, part, definition] = wordArray;
     res.render('wotd', {word:word, part:part, definition:definition});
-});//Callback function. Function calling a function. ex: get funtion (destination, fucntion2)
+});
 
 module.exports = router;
+
+//This is the portion for HW due MAR.8.26 "Adding page to allwords route"
+router.get('/allwords', (req, res)=>{
+
+});
+
 
 /*
 This is written JAVA way. Using async/await synthax
@@ -31,4 +40,3 @@ let getWordFromDictionary = async ()=>{
         console.log("There is an error reading the file:", err);
     }
 }
-

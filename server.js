@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express() //Calling express as a function sets up server
+const app = express(); //Calling express as a function sets up server
 const userRouter = require('./routes/users');//added during route slides
 const wordRouter = require('./routes/words');//created another route
 
@@ -41,6 +41,24 @@ res.send('User List');
 });
 app.get('/users/new', (req, res)=>{
 res.send('User New Form');
+});
+
+//Append Test
+app.set("view engine", "ejs");
+
+const wotdRouter = require("./routes/wotd");
+
+app.use("/", wotdRouter);
+
+//Append Test 2
+router.get('/', (req, res) => {
+
+    const word = "Hello";   // temporary test word
+
+    res.render('index', {
+        word: word
+    });
+
 });
 
 app.listen(3030);//Tell our app to listen for requests

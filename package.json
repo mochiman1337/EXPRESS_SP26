@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mochiman1337/EXPRESS_SP26.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mochiman1337/EXPRESS_SP26/issues"
+  },
+  "homepage": "https://github.com/mochiman1337/EXPRESS_SP26#readme"
 }
