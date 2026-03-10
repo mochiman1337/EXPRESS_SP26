@@ -44,6 +44,7 @@ res.send('User New Form');
 });
 
 //Append Test
+//Page would'nt even load. This made it work
 app.set("view engine", "ejs");
 
 const wotdRouter = require("./routes/wotd");
@@ -51,6 +52,7 @@ const wotdRouter = require("./routes/wotd");
 app.use("/", wotdRouter);
 
 //Append Test 2
+/*
 router.get('/', (req, res) => {
 
     const word = "Hello";   // temporary test word
@@ -60,5 +62,6 @@ router.get('/', (req, res) => {
     });
 
 });
+*/
 
 app.listen(3030);//Tell our app to listen for requests

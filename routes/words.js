@@ -3,12 +3,10 @@ const router = express.Router();
 
 // Importing FS packages to read from file
 const {readFile, writeFile} = require('fs').promises;// Destructing, within {}
-
 router.get('/', (req, res)=>{
     res.send('Word Home Page');
 });
 
-//I am commenting out this portion to fix code overlap in WOTD
 //Callback function. Function calling a function. ex: get funtion (destination, fucntion2)
 router.get('/wotd', async (req, res)=>{
     let wordArray = await getWordFromDictionary();
@@ -16,17 +14,7 @@ router.get('/wotd', async (req, res)=>{
     res.render('wotd', {word:word, part:part, definition:definition});
 });
 
-module.exports = router;
-
-//This is the portion for HW due MAR.8.26 "Adding page to allwords route"
-router.get('/allwords', (req, res)=>{
-
-});
-
-
-/*
-This is written JAVA way. Using async/await synthax
-*/
+//This is written JAVA way. Using async/await synthax
 let getWordFromDictionary = async ()=>{
     try{
         const data = await readFile('resources/allwords.txt', 'utf8');
@@ -40,3 +28,34 @@ let getWordFromDictionary = async ()=>{
         console.log("There is an error reading the file:", err);
     }
 }
+
+//This is "Adding page to allwords route" for WOTD HW
+router.get('/allwords', async (req, res) => {
+    try {
+        let data = await readFile('resources/allwords.txt', 'utf8');
+        let lines = data.split('\n');//splitting in new lines
+        let finalList = [];//array
+        for (let i = 0; i < lines.length; i++) {
+            
+            if (lines[i] !== "") {
+                let part = lines[i].split('\t');//takes notes of tabs /t
+                //console.log(parts);//system.out.println() Debug only
+                finalList.push(part);//push = adding to array
+            }
+        }
+        finalList.sort(function(a, b) {
+            if (a[0] < b[0]) { 
+                return -1; // Put 'a' before 'b'
+            }
+            if (a[0] > b[0]) { 
+                return 1;  // Put 'b' before 'a'
+            }
+            return 0; // They are the same, don't move them
+        });
+        res.render('allwords', { allMyWords: finalList });
+    } catch (err) {
+        console.log("Error reading allwords file:", err);
+    }
+});
+
+module.exports = router;//This must always stay at bottom
